@@ -38,3 +38,11 @@ Once the math and data structures are understood, the next step is building the 
 ### 4. Real-Time Tooling and Hardware Processing
 Because 3D point clouds can contain millions of points, real-time performance requires moving beyond Python.
 - **Open3D:** A modern library that bridges the gap beautifully. It has excellent Python bindings for prototyping, but its core is written in highly optimized C++, making it great for production pipelines.
+
+### 5. 2D vs 3D Object Detection
+
+![Detection Comparison](4_Object_Detection_2D_vs_3D/output_comparison.png)
+
+A final showcase comparing traditional 2D computer vision with 3D computer vision concepts.
+- **2D Detection:** Using OpenCV to detect objects in an image with a standard 2D bounding box.
+- **3D Detection:** Projecting a 3D bounding box to estimate depth and spatial volume, which is critical for applications like robotics and autonomous driving.
