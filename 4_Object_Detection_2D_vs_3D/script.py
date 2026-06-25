@@ -38,11 +38,17 @@ for (x, y, w, h) in cats:
     # 2d front points (the detected box)
     pts_front = np.array([[x, y], [x+w, y], [x+w, y+h], [x, y+h]], np.int32)
     
-    # simulated 3d back points with depth offset
-    offset_x = int(w * 0.25)
-    offset_y = int(h * 0.25)
-    pts_back = np.array([[x+offset_x, y-offset_y], [x+w+offset_x, y-offset_y], 
-                         [x+w+offset_x, y+h-offset_y], [x+offset_x, y+h-offset_y]], np.int32)
+    # simulate true perspective projection going "back" into the image
+    img_h, img_w = img.shape[:2]
+    img_cx, img_cy = img_w / 2, img_h / 2
+    
+    scale = 0.8 # scale factor for depth (smaller = further back)
+    pts_back = []
+    for px, py in pts_front:
+        bx = int(img_cx + (px - img_cx) * scale)
+        by = int(img_cy + (py - img_cy) * scale)
+        pts_back.append([bx, by])
+    pts_back = np.array(pts_back, np.int32)
     
     # draw back box n connecting lines in BLUE (BGR: 255, 0, 0) for simulated 3d parts
     cv2.polylines(img_3d, [pts_back], True, (255, 0, 0), 3)
