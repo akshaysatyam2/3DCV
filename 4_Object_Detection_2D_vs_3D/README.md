@@ -15,8 +15,9 @@ the script downloads an image of a pet dog from the web n uses standard object d
 a true 3d detection model outputs a 3d bounding box `(x, y, z, l, w, h, yaw)`. since we dont have real lidar data here, the script simulates this by projecting a 3d box onto the 2d image using geometric offsets.
 
 ## comparison
-i made the script save them seprately so u can see:
-- **2d box:** `output_2d.png`
-- **3d box:** `output_3d.png`
+the script outputs a single combined image `output_comparison.png` which shows three different approaches:
+- **2d opencv box:** standard flat bounding box
+- **pseudo-3d projection (vanishing trick):** a lightweight 2d geometric illusion
+- **true 3d projection (cv2.projectPoints):** a mathematically accurate 3d camera projection model
 
-the combined plot `output_comparison.png` makes it really easy to understand how 3d gives us much more spatial awareness!
+this 3-way comparison makes it really easy to understand how true 3d projection gives us much more spatial awareness and accuracy!
