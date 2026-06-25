@@ -6,7 +6,8 @@ This repository tracks my journey and projects as I learn and build in the field
 
 ### 1. Master the Mathematical Foundation (Multi-View Geometry)
 
-![Mathematical Foundation](/home/akshay/.gemini/antigravity-cli/brain/400231fb-8bdc-4212-b0f4-663f739ff6b2/math_foundation_1782405514687.jpg)
+![Coordinate Frames](1_Mathematical_Foundation/Coordinate_Frames/output.png)
+![Camera Models](1_Mathematical_Foundation/Camera_Models/output.png)
 
 Before touching a neural network, it is essential to understand how the 3D world projects onto a 2D sensor. This is entirely based on linear algebra and matrix operations.
 - **Coordinate Frames and Transformations:** Represent 3D rotations and translations using matrices in $SE(3)$ and quaternions.
@@ -16,7 +17,8 @@ Before touching a neural network, it is essential to understand how the 3D world
 
 ### 2. Understand 3D Data Representations
 
-![3D Data Representations](/home/akshay/.gemini/antigravity-cli/brain/400231fb-8bdc-4212-b0f4-663f739ff6b2/data_representations_1782405526711.jpg)
+![Point Clouds](2_3D_Data_Representations/Point_Clouds/output.png)
+![Voxels](2_3D_Data_Representations/Voxels/output.png)
 
 Unlike 2D images which are always grid-like matrices, 3D data requires choosing a representation before building a pipeline. Each has different mathematical properties:
 - **Point Clouds:** Unordered sets of $(x, y, z)$ coordinates. Often raw sensor data from LiDAR or depth cameras. Represented as an $N \times 3$ matrix.
@@ -26,7 +28,7 @@ Unlike 2D images which are always grid-like matrices, 3D data requires choosing 
 
 ### 3. The "Hello World" of 3D Deep Learning
 
-![PointNet Architecture](/home/akshay/.gemini/antigravity-cli/brain/400231fb-8bdc-4212-b0f4-663f739ff6b2/pointnet_architecture_1782405538893.jpg)
+![PointNet](3_3D_Deep_Learning/PointNet/output.png)
 
 Once the math and data structures are understood, the next step is building the first 3D network. The perfect starting point is PointNet.
 - Standard Convolutional Neural Networks (CNNs) fail on point clouds because point clouds are orderless (shuffling the rows of an $N \times 3$ point cloud matrix doesn't change the 3D shape). 

@@ -1,14 +1,12 @@
 import numpy as np
+import matplotlib.pyplot as plt
 
-def create_voxel_grid(size):
-    """creates a 3d voxel grid of given size."""
-    return np.zeros((size, size, size), dtype=int)
+grid = np.zeros((10, 10, 10), dtype=bool)
+grid[2:8, 2:8, 2:8] = True
+grid[3:7, 3:7, 3:7] = False
 
-def set_voxel(grid, x, y, z):
-    if 0 <= x < grid.shape[0] and 0 <= y < grid.shape[1] and 0 <= z < grid.shape[2]:
-        grid[x, y, z] = 1
-
-voxel_grid = create_voxel_grid(10)
-set_voxel(voxel_grid, 5, 5, 5)
-print(f"voxel grid shape: {voxel_grid.shape}")
-print(f"is voxel at (5,5,5) active? {voxel_grid[5,5,5] == 1}")
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+ax.voxels(grid, edgecolor='k')
+ax.set_title("Voxel Grid Representation")
+plt.savefig("output.png")

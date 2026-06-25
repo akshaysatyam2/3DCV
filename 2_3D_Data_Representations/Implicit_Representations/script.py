@@ -1,14 +1,14 @@
 import numpy as np
+import matplotlib.pyplot as plt
 
-def implicit_sphere(x, y, z, radius=1.0):
-    """returns distance to surface of a sphere. negative means inside."""
-    return np.sqrt(x**2 + y**2 + z**2) - radius
+x = np.linspace(-2, 2, 100)
+y = np.linspace(-2, 2, 100)
+X, Y = np.meshgrid(x, y)
+Z = np.sqrt(X**2 + Y**2) - 1.0
 
-# check a few points
-p1 = (0, 0, 0)
-p2 = (2, 0, 0)
-p3 = (0, 1, 0)
-
-print(f"point {p1} dist: {implicit_sphere(*p1)}")
-print(f"point {p2} dist: {implicit_sphere(*p2)}")
-print(f"point {p3} dist: {implicit_sphere(*p3)}")
+plt.figure()
+cp = plt.contourf(X, Y, Z, levels=20, cmap='RdBu')
+plt.colorbar(cp, label='Distance to surface')
+plt.contour(X, Y, Z, levels=[0], colors='black', linewidths=2)
+plt.title("Implicit Representation (Signed Distance Field)")
+plt.savefig("output.png")
