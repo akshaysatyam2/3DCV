@@ -283,7 +283,7 @@ for folder, script_code, readme_code in topics:
     with open(readme_path, "w") as f:
         f.write(readme_code)
         
-    subprocess.run(["python", script_path], cwd=os.path.join(os.getcwd(), folder))
+    subprocess.run(["python", "script.py"], cwd=os.path.join(os.getcwd(), folder))
 
     old_doc = os.path.join(folder, "doc.md")
     if os.path.exists(old_doc):
