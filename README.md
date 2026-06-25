@@ -5,6 +5,9 @@ This repository tracks my journey and projects as I learn and build in the field
 ## Learning Approach
 
 ### 1. Master the Mathematical Foundation (Multi-View Geometry)
+
+![Mathematical Foundation](/home/akshay/.gemini/antigravity-cli/brain/400231fb-8bdc-4212-b0f4-663f739ff6b2/math_foundation_1782405514687.jpg)
+
 Before touching a neural network, it is essential to understand how the 3D world projects onto a 2D sensor. This is entirely based on linear algebra and matrix operations.
 - **Coordinate Frames and Transformations:** Represent 3D rotations and translations using matrices in $SE(3)$ and quaternions.
 - **Camera Models:** Understand the pinhole camera model. Manually construct the intrinsic matrix (focal length and optical center) and extrinsic matrix (the camera's rotation $R$ and translation $t$ in world space).
@@ -12,6 +15,9 @@ Before touching a neural network, it is essential to understand how the 3D world
 - **Project Idea:** Implement camera calibration or a fundamental matrix calculator entirely from scratch using NumPy. No OpenCV for this step—code the Singular Value Decomposition (SVD) and matrix multiplications manually.
 
 ### 2. Understand 3D Data Representations
+
+![3D Data Representations](/home/akshay/.gemini/antigravity-cli/brain/400231fb-8bdc-4212-b0f4-663f739ff6b2/data_representations_1782405526711.jpg)
+
 Unlike 2D images which are always grid-like matrices, 3D data requires choosing a representation before building a pipeline. Each has different mathematical properties:
 - **Point Clouds:** Unordered sets of $(x, y, z)$ coordinates. Often raw sensor data from LiDAR or depth cameras. Represented as an $N \times 3$ matrix.
 - **Voxels:** 3D pixel grids. Conceptually easy because 3D convolutions can be applied to them, but incredibly memory-intensive (most of a 3D space is empty).
@@ -19,6 +25,9 @@ Unlike 2D images which are always grid-like matrices, 3D data requires choosing 
 - **Implicit Representations:** Functions (like Neural Radiance Fields) that map a continuous 3D coordinate directly to a density or color value using a multi-layer perceptron.
 
 ### 3. The "Hello World" of 3D Deep Learning
+
+![PointNet Architecture](/home/akshay/.gemini/antigravity-cli/brain/400231fb-8bdc-4212-b0f4-663f739ff6b2/pointnet_architecture_1782405538893.jpg)
+
 Once the math and data structures are understood, the next step is building the first 3D network. The perfect starting point is PointNet.
 - Standard Convolutional Neural Networks (CNNs) fail on point clouds because point clouds are orderless (shuffling the rows of an $N \times 3$ point cloud matrix doesn't change the 3D shape). 
 - PointNet solves this by using a symmetric mathematical function—specifically, Max Pooling—to aggregate features across all points regardless of their order.
