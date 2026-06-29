@@ -34,17 +34,25 @@ unlike 2d images which r always just grids, 3d data requires picking a represent
 ![pointnet](3_3D_Deep_Learning/PointNet/output.png)
 
 once the math n data structures make sense, building the first 3d network is next. pointnet is the perfect starting point.
-- standard cnns fail on point clouds cos point clouds r orderless.
-- pointnet solves this by using a symmetric math function - specifically max pooling - to aggregate features across all points.
-- **project idea:** build pointnet from scratch in pytorch using shared mlps n train it on modelnet40.
+- **the problem:** standard cnns fail on point clouds cos points r unordered. if u shuffle the rows of the point matrix, standard cnns get confused.
+- **the fix:** pointnet uses shared mlps to process each point separately, then uses a symmetric math function - specifically max pooling - to squash all points into a single global feature vector.
+- **what i built:** coded a mini pointnet from scratch in pytorch! generated a synthetic dataset of 3d shapes (spheres, cubes, n cylinders) n trained it to classify them.
+- **critical points:** the model learns to identify shapes by looking at specific points. in the plot, you can see the red "critical points" that the max pooling step picked out. they outline the actual corners n edges of the cube!
 
 ### 4. real-time tooling n hardware processing
-since 3d point clouds can have millions of points, real-time performance needs more than just python.
-- **open3d:** modern library that bridges the gap. great python bindings for prototyping, but core is optimized c++.
+
+![open3d pipeline](4_Real_Time_Tooling/Open3D_Processing/output.png)
+
+since 3d point clouds can have millions of points, real-time performance needs more than just python. we use open3d (which wraps optimized c++ under the hood) to handle massive geometry operations fast.
+- **what i built:** a mini real-time lidar processing pipeline!
+- **voxel downsampling:** average points in tiny 3d grids (voxels) to drastically cut down point count while keeping the shapes intact.
+- **ransac plane segmentation:** mathematically fit a flat plane to the road. once we identify the road, we filter it out to isolate actual obstacles.
+- **dbscan clustering:** group the remaining points based on density. if points r close together, they r grouped into the same object (like a car or a pedestrian).
+- **hardware compatibility:** added a fallback so the script runs w/ numpy n scikit-learn if the hardware lacks avx/avx2 support, so it never crashes!
 
 ### 5. 2d vs 3d object detection
 
-![detection comparison](4_Object_Detection_2D_vs_3D/output_comparison.png)
+![detection comparison](5_Object_Detection_2D_vs_3D/output_comparison.png)
 
 a final showcase comparing traditional 2d cv with 3d cv!
 - **2d detection:** using opencv to detect objects with a standard flat 2d bounding box.
