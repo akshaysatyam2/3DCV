@@ -6,9 +6,9 @@ this repo tracks my journey n projects as i learn n build stuff in 3d computer v
 
 ### 1. master the mathematical foundation (multi-view geometry)
 
-![coordinate frames](1_Mathematical_Foundation/Coordinate_Frames/output.png)
-![camera models](1_Mathematical_Foundation/Camera_Models/output.png)
-![epipolar geometry](1_Mathematical_Foundation/Epipolar_Geometry/output.png)
+![coordinate frames](1_Mathematical_Foundation/1_1_Coordinate_Frames/output.png)
+![camera models](1_Mathematical_Foundation/1_2_Camera_Models/output.png)
+![epipolar geometry](1_Mathematical_Foundation/1_3_Epipolar_Geometry/output.png)
 
 before even touching a neural net, u gotta understand how the 3d world projects onto a 2d sensor. this is literally just linear algebra n matrix operations.
 - **coordinate frames n transformations:** representing 3d rotations n translations using matrices in $SE(3)$.
@@ -18,10 +18,10 @@ before even touching a neural net, u gotta understand how the 3d world projects 
 
 ### 2. understand 3d data representations
 
-![point clouds](2_3D_Data_Representations/Point_Clouds/output.png)
-![voxels](2_3D_Data_Representations/Voxels/output.png)
-![meshes](2_3D_Data_Representations/Meshes/output.png)
-![implicit reps](2_3D_Data_Representations/Implicit_Representations/output.png)
+![point clouds](2_3D_Data_Representations/2_1_Point_Clouds/output.png)
+![voxels](2_3D_Data_Representations/2_2_Voxels/output.png)
+![meshes](2_3D_Data_Representations/2_3_Meshes/output.png)
+![implicit reps](2_3D_Data_Representations/2_4_Implicit_Representations/output.png)
 
 unlike 2d images which r always just grids, 3d data requires picking a representation first:
 - **point clouds:** unordered sets of (x, y, z) coordinates. usually raw sensor data from lidar.
@@ -31,7 +31,7 @@ unlike 2d images which r always just grids, 3d data requires picking a represent
 
 ### 3. the "hello world" of 3d deep learning
 
-![pointnet](3_3D_Deep_Learning/PointNet/output.png)
+![pointnet](3_3D_Deep_Learning/3_1_PointNet/output.png)
 
 once the math n data structures make sense, building the first 3d network is next. pointnet is the perfect starting point.
 - **the problem:** standard cnns fail on point clouds cos points r unordered. if u shuffle the rows of the point matrix, standard cnns get confused.
@@ -41,7 +41,7 @@ once the math n data structures make sense, building the first 3d network is nex
 
 ### 4. real-time tooling n hardware processing
 
-![open3d pipeline](4_Real_Time_Tooling/Open3D_Processing/output.png)
+![open3d pipeline](4_Real_Time_Tooling/4_1_Open3D_Processing/output.png)
 
 since 3d point clouds can have millions of points, real-time performance needs more than just python. we use open3d (which wraps optimized c++ under the hood) to handle massive geometry operations fast.
 - **what i built:** a mini real-time lidar processing pipeline!

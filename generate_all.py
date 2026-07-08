@@ -3,7 +3,7 @@ import sys
 import subprocess
 
 topics = [
-    ("1_Mathematical_Foundation/Coordinate_Frames", 
+    ("1_Mathematical_Foundation/1_1_Coordinate_Frames", 
 """import numpy as np
 import matplotlib.pyplot as plt
 
@@ -49,7 +49,7 @@ the python script creates simple rotation n translation matrices using numpy. it
 this is super useful cos everything in 3d space relates to these transformations.
 """),
 
-    ("1_Mathematical_Foundation/Camera_Models",
+    ("1_Mathematical_Foundation/1_2_Camera_Models",
 """import numpy as np
 import matplotlib.pyplot as plt
 
@@ -90,7 +90,7 @@ the extrinsic matrix handles where the camera is in the world, while the intrins
 the python code implements the intrinsic matrix n projects a simple 3d cube onto a 2d plane. everything is done with numpy n plotted with matplotlib so its easy n nderstandable. u can see the perspective effect where objects further away look smaller!
 """),
 
-    ("1_Mathematical_Foundation/Epipolar_Geometry",
+    ("1_Mathematical_Foundation/1_3_Epipolar_Geometry",
 """import numpy as np
 import matplotlib.pyplot as plt
 
@@ -129,7 +129,7 @@ epipolar lines r the projection of the camera ray from one view into the other.
 i wrote a script that simulates a stereo camera setup! it creates random 3d points and projects them into two different camera views (left n right). u can see how the points shift horizontally, just like how our two eyes perceive depth.
 """),
 
-    ("2_3D_Data_Representations/Point_Clouds",
+    ("2_3D_Data_Representations/2_1_Point_Clouds",
 """import numpy as np
 import matplotlib.pyplot as plt
 
@@ -157,7 +157,7 @@ a point cloud is simply an $N \\times 3$ matrix. since its unordered, changing t
 the script generates a random point cloud in the shape of a sphere using spherical coordinates n plots it in 3d. the color maps to the z-axis. simple n nderstandable!
 """),
 
-    ("2_3D_Data_Representations/Voxels",
+    ("2_3D_Data_Representations/2_2_Voxels",
 """import numpy as np
 import matplotlib.pyplot as plt
 
@@ -183,7 +183,7 @@ its conceptually easy cos u can apply 3d convolutions on them directly just like
 i made a 3d numpy array to act as a voxel grid and filled it to create a hollow box structure. the script then renders the voxels using matplotlibs built in voxel plotting. really shows how blocks build up a shape!
 """),
 
-    ("2_3D_Data_Representations/Meshes",
+    ("2_3D_Data_Representations/2_3_Meshes",
 """import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d.art3d import Poly3DCollection
@@ -214,7 +214,7 @@ a mesh stores a list of 3d vertices n a list of faces (usually triangles) that c
 the script creates a simple pyramid mesh from scratch using vertices n face definitions, n plots it as a 3d polygon collection. 
 """),
 
-    ("2_3D_Data_Representations/Implicit_Representations",
+    ("2_3D_Data_Representations/2_4_Implicit_Representations",
 """import numpy as np
 import matplotlib.pyplot as plt
 
@@ -242,7 +242,7 @@ nerfs (neural radiance fields) use this! a neural network acts as the implicit f
 i wrote a script showing a 2d slice of a signed distance field (sdf) for a sphere. the black line is the surface (distance=0). inside is negative distance, outside is positive. this helps visualize how implicit functions encode shapes.
 """),
 
-    ("3_3D_Deep_Learning/PointNet",
+    ("3_3D_Deep_Learning/3_1_PointNet",
 """import numpy as np
 import torch
 import torch.nn as nn
@@ -399,7 +399,7 @@ to process an unordered set of points, pointnet processes each point independent
 we generate a synthetic dataset of 3d shapes (spheres, cubes, n cylinders), train a mini pointnet model to classify them, n plot the training loss alongside the "critical points" that the model picked out to identify a cube. u can see the red points are the most important corners/edges that define the shape!
 """),
 
-    ("4_Real_Time_Tooling/Open3D_Processing",
+    ("4_Real_Time_Tooling/4_1_Open3D_Processing",
 """import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
