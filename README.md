@@ -243,30 +243,31 @@ the script has a hardware fallback — if the cpu lacks avx/avx2 support, it run
 
 ### 5. 2d vs 3d object detection
 
-a final showcase comparing traditional 2d cv with 3d cv — super critical for robotics n self driving cars.
+a massive upgrade from basic haar cascades to a fully modular, production-ready pipeline using a state-of-the-art **yolo26** model exported to onnx. super critical for robotics n self driving cars where u need to know exact depths, not just 2d pixels.
 
-![detection comparison](5_Object_Detection_2D_vs_3D/output_comparison.png)
+**Step 1: YOLO26 Deep Learning 2D Detection:**
+![yolo26 2d detection](5_Object_Detection_2D_vs_3D/2_Image_Inference/output_2d_pet.jpg)
 
-the script downloads an image n uses opencv haar cascades for 2d detection, then projects 3d bounding boxes using two different methods. the comparison shows how true 3d projection gives us much more spatial awareness and accuracy.
+**Step 2: 3D Depth Estimation & Projection:**
+![yolo26 3d estimation](5_Object_Detection_2D_vs_3D/2_Image_Inference/output_3d_pet.jpg)
 
-**color coding:**
-- **red box** — original 2d detection (front face)
-- **blue lines** — simulated 3d depth projection (back face + connecting edges)
+**Classic OpenCV 3D Projection (For Comparison):**
+![detection comparison](5_Object_Detection_2D_vs_3D/1_OpenCV_2D_vs_3D/output_comparison.png)
+
+the main directory is now split into three modules:
+1. **1_OpenCV_2D_vs_3D:** my old opencv scripts that explain the basic math behind projecting a 2d box into 3d using vanishing points n `cv2.projectPoints`.
+2. **2_Image_Inference:** completely modular deep learning inference. decodes a `(1, 300, 6)` onnx tensor, projects detections into 3d world coordinates using camera focal length, n renders em in a matplotlib 3d space.
+3. **3_Video_Inference:** exact same logic but optimized for video files n rtsp live streams. processes frame-by-frame n saves out a dope mp4 animation!
 
 <details>
 <summary>files in <code>5_Object_Detection_2D_vs_3D/</code></summary>
 
-| file | description |
+| file/folder | description |
 |---|---|
-| `script.py` | downloads a test image, runs haar cascade detection, draws 2d box, pseudo-3d vanishing-point box, n true 3d `cv2.projectPoints` box, saves a 3-panel comparison |
-| `script_open3d.py` | alternate version using open3d for 3d visualization |
-| `README.md` | explains 2d vs 3d detection, color coding, n the 3 comparison methods |
-| `haarcascade.xml` | opencv frontal face haar cascade |
-| `haarcascade_cat.xml` | opencv cat face haar cascade |
-| `pet.jpg` | input test image (dog) |
-| `output_2d.png` | 2d detection result |
-| `output_3d.png` | 3d detection result |
-| `output_comparison.png` | final 3-panel comparison (2d box · pseudo-3d · true 3d projection) |
+| `2_Image_Inference/` | modular inference scripts for images (`image_detection.py`, `yolo_utils.py`) |
+| `3_Video_Inference/` | real-time stream n mp4 processing (`video_detection.py`, `yolo_utils.py`) |
+| `1_OpenCV_2D_vs_3D/` | the old standard 2d vs 3d opencv comparision scripts |
+| `README.md` | explains how to run the new inference engines |
 
 </details>
 
