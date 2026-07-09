@@ -246,13 +246,16 @@ the script has a hardware fallback — if the cpu lacks avx/avx2 support, it run
 a massive upgrade from basic haar cascades to a fully modular, production-ready pipeline using a state-of-the-art **yolo26** model exported to onnx. super critical for robotics n self driving cars where u need to know exact depths, not just 2d pixels.
 
 **Step 1: YOLO26 Deep Learning 2D Detection:**
-![yolo26 2d detection](5_Object_Detection_2D_vs_3D/2_Image_Inference/output_2d_pet.jpg)
+[![yolo26 2d detection](5_Object_Detection_2D_vs_3D/2_Image_Inference/output_2d_pet.jpg)](5_Object_Detection_2D_vs_3D/2_Image_Inference/output_2d_pet.jpg)
 
 **Step 2: 3D Depth Estimation & Projection:**
-![yolo26 3d estimation](5_Object_Detection_2D_vs_3D/2_Image_Inference/output_3d_pet.jpg)
+[![yolo26 3d estimation](5_Object_Detection_2D_vs_3D/2_Image_Inference/output_3d_pet.jpg)](5_Object_Detection_2D_vs_3D/2_Image_Inference/output_3d_pet.jpg)
+
+**Step 3: 4K Video Inference (Dynamic Tracking):**
+[▶️ Click here to watch the generated 4K Video Inference!](5_Object_Detection_2D_vs_3D/3_Video_Inference/output_video.mp4)
 
 **Classic OpenCV 3D Projection (For Comparison):**
-![detection comparison](5_Object_Detection_2D_vs_3D/1_OpenCV_2D_vs_3D/output_comparison.png)
+[![detection comparison](5_Object_Detection_2D_vs_3D/1_OpenCV_2D_vs_3D/output_comparison.png)](5_Object_Detection_2D_vs_3D/1_OpenCV_2D_vs_3D/output_comparison.png)
 
 the main directory is now split into three modules:
 1. **1_OpenCV_2D_vs_3D:** my old opencv scripts that explain the basic math behind projecting a 2d box into 3d using vanishing points n `cv2.projectPoints`.

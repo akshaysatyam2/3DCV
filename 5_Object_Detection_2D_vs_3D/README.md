@@ -18,10 +18,13 @@ moved onto modern deep learning! this folder runs a yolo26 model exported to onn
 - renders the 3d bounding boxes in a dedicated matplotlib 3d plot space.
 
 **Step 1: 2D Detection with YOLO26:**
-![yolo26 2d detection](2_Image_Inference/output_2d_pet.jpg)
+[![yolo26 2d detection](2_Image_Inference/output_2d_pet.jpg)](2_Image_Inference/output_2d_pet.jpg)
 
 **Step 2: 3D Depth Estimation:**
-![yolo26 3d estimation](2_Image_Inference/output_3d_pet.jpg)
+[![yolo26 3d estimation](2_Image_Inference/output_3d_pet.jpg)](2_Image_Inference/output_3d_pet.jpg)
+
+**Step 3: 4K Video Inference (Dynamic Tracking):**
+[▶️ Click here to watch the generated 4K Video Inference!](3_Video_Inference/output_video.mp4)
 **how to run:**
 ```bash
 cd 2_Image_Inference
